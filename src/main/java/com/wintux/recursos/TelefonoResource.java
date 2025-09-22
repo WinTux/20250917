@@ -49,4 +49,15 @@ public class TelefonoResource {
             }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
+    @DELETE
+    @Path("{eliminable}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response eliminarMovil(@PathParam("eliminable") int id){
+        for(Telefono t : listaMoviles)
+            if(t.getId() == id){
+                listaMoviles.remove(t);
+                return Response.noContent().build();
+            }
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
 }
